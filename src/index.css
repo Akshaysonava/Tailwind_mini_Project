@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+body,
+html {
+  overflow-x: hidden;
+}
+
+.container {
+  padding: 3rem 1.5rem;
+  max-width: 95rem;
+  margin-top: 4rem;
+  margin-inline: auto;
+}
+
+.gradient-hover-outer {
+  padding: 1px;
+  background-color: rgb(226, 232, 240); /* slate-200 */
+}
+
+.gradient-hover-outer:hover {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(254, 202, 202),
+    rgb(233, 213, 255),
+    rgb(254, 240, 138)
+  );
+  /* red-200 -> purple-200 -> yellow-200 */
+}
+
+.gradient-hover-inner {
+  background-color: rgb(248, 250, 252); /* slate-50 */
+}
+
+/* Equivalent to group-hover */
+.group:hover .gradient-hover-inner {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(254, 242, 242),
+    rgb(250, 245, 255),
+    rgb(254, 252, 232)
+  );
+  /* red-50 -> purple-50 -> yellow-50 */
+}
+
+.anchor-hover {
+  border-bottom-width: 1px;
+  border-bottom-style: dotted;
+  border-bottom-color: rgb(209, 213, 219); /* gray-300 */
+}
+
+.anchor-hover:hover {
+  border-bottom-style: solid;
+  border-bottom-color: rgb(107, 114, 128); /* gray-500 */
+}
