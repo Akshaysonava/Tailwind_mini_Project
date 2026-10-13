@@ -31,9 +31,9 @@
     
     <link href="/src/style.css" rel="stylesheet" />
   </head>
-  <body>
+  <body id="top">
     <!-- ========== Start navbar Section ========== -->
-    <nav class="p-3 flex bg-white justify-between items-center fixed top-0 left-0 right-0 z-20 shadow-md">
+    <nav class="p-3 flex bg-white justify-between items-center fixed top-0 left-0 right-0 z-20 shadow-md header " data-header>
       <a href="#" id="brand" class="flex gap-2 items-center flex-1">
         <img
           class="object-cover max-w-12 max-h-12"
@@ -42,16 +42,16 @@
         />
         <span class="text-lg font-medium">ToDesktop</span>
       </a>
-      <div id="nav-menu" class="hidden lg:flex gap-12">
+      <div id="nav-menu" class="hidden md:flex lg:gap-12 md:gap-6">
         <a href="#" class="font-medium hover:text-blue-950">Pricing</a>
         <a href="#" class="font-medium hover:text-blue-950">Docs</a>
         <a href="#" class="font-medium hover:text-blue-950">Changelog</a>
         <a href="#" class="font-medium hover:text-blue-950">Blogs</a>
         <a href="#" class="font-medium hover:text-blue-950">Login</a>
       </div>
-      <div class="hidden lg:flex flex-1 justify-end">
+      <div class="hidden md:flex flex-1 justify-end">
         <button
-          class="flex gap-2 items-center border border-gray-400 px-6 py-2 rounded-lg hover:border-gray-600"
+          class="flex gap-2 items-center border border-gray-400 lg:px-6 md:py-1 md:gap-1 md:px-2  lg:py-2  rounded-lg hover:border-gray-600"
         >
           <img
             src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%201.svg"
@@ -61,7 +61,7 @@
           <i class="fa-solid fa-arrow-right"></i>
         </button>
       </div>
-      <button class="p-2 lg:hidden" onclick="handleMenu()">
+      <button class="p-2 md:hidden" onclick="handleMenu()">
         <i class="fa-solid fa-bars text-gray-800"></i>
       </button>
 
@@ -670,7 +670,7 @@
       </div>
 
       <!-- step by step  -->
-       <div id="steps" class="flex flex-col gap-6 container lg:px-8 lg:mt-32">
+       <div id="steps" class="flex flex-col gap-6 container lg:px-8 lg:mt-10">
         <h2 class="text-gray-800 font-medium text-5xl sm:font-semibold mb-14">How it works </h2>
         <div id="step1" class="rounded-xl border border-gray-300 px-8 py-12 flex flex-col lg:flex-row justify-between">
           <div class="flex flex-col gap-6 lg:w-1/2">
@@ -784,7 +784,7 @@
        </div>
 
        <!-- bento grrid -->
-        <div id="bento-grid" class="container lg:px-8 lg:mt-32 flex flex-col gap-6">
+        <div id="bento-grid" class="container lg:px-8 lg:mt-10 flex flex-col gap-6">
           <h2 class="text-gray-800 font-medium text-5xl sm:font-semibold mb-14 max-w-xl leading-normal ">
             
             ToDesktop handles the details  
@@ -1252,21 +1252,7 @@
                      </dd>
                 </div>
                 
-                <div class="group rounded-xl border border-gray-200 bg-gray-50 p-6">
-                  <dt class="cursor-pointer flex justify-between items-center " aria-controls="faq-2">
-                    <p class="font-semibold text-lg">Is ToDesktop For Me?</p>
-                     <i
-                class="fa-solid fa-chevron-up -rotate-180 transition-transform"
-              ></i>
-                     </dt>
-                     <dd id="faq-2" class="hidden text-lg font-light mt-6">
-                      <p>
-                        That depends! If you would like to distribute your web app to
-                your users as a downloadable desktop app then ToDesktop is for
-                you.
-                      </p>
-                     </dd>
-                </div>
+              
                 <div class="group rounded-xl border border-gray-200 bg-gray-50 p-6">
                   <dt class="cursor-pointer flex justify-between items-center " aria-controls="faq-3">
                     <p class="font-semibold text-lg">Is ToDesktop For Me?</p>
@@ -1351,9 +1337,9 @@
 
     <!-- ========== Start FOOTER Section ========== -->
     
-    <footer class="container lg:px-8 lg:py-10">
+    <footer class="flex flex-col justify-between container lg:px-8 lg:mt-10 ">
        <div class="rounded-lg
-        border border-gray-300 lg:border-none bg-gray-50 flex flex-col lg:flex-row-reverse items-center px-8 py-12 gap-8">
+        border border-gray-300 lg:border-none bg-gray-50 flex flex-col lg:flex-row-reverse items-center px-8 py-6 gap-8">
         <a href="#" class="font-medium text-lg ">Documentation</a>
         <div class="flex gap-8 text-lg">
           <a href="#" class="text-gray-600  hover:text-gray-900 ">
@@ -1371,7 +1357,7 @@
           <span class="text-lg font-medium ">ToDesktop</span>
         </a>        
       </div>
-      <div id="sub-footer" class="flex flex-col gap-6 items-center justify-center my-12">
+      <div id="sub-footer" class="flex flex-col gap-4 items-center justify-between my-2  ">
         <div class="flex gap-2 items-center ">
           <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2054.svg" class="w-4 h-4 lg:w-6 lg:h-6 " alt="Y Logo"> 
           <p class="text-sm lg:text-2xl  text-gray-600">A Y Combinator company. </p>
@@ -1383,6 +1369,13 @@
 
     <!-- ========== End FOOTER Section ========== -->
     
+  <!-- ========== Start BACK TO TOP Section ========== -->
+      <a href="#top" class="back-top-btn  shadow-md  bg-blue-200 hover:bg-blue-300" aria-label="back to top" data-back-top-btn>
+       <i
+                class="fa-solid fa-chevron-up text-lg"></i>
+      </a>
+      <!-- ========== End BACK TO TOP Section ========== -->
+
 
     <script src="script.js"></script>
     <script type="module" src="/src/main.jsx"></script>

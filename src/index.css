@@ -3,12 +3,26 @@
 body,
 html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #1569cf;
 }
 
 .container {
   padding: 3rem 1.5rem;
   max-width: 95rem;
-  margin-top: 4rem;
+  /* margin-top: 1rem; */
   margin-inline: auto;
 }
 
@@ -51,4 +65,47 @@ html {
 .anchor-hover:hover {
   border-bottom-style: solid;
   border-bottom-color: rgb(107, 114, 128); /* gray-500 */
+}
+
+/***** back to top Section *****/
+.back-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 5px;
+  /* background-color: aquamarine; */
+  color: black;
+  font-size: 22px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-1);
+  transition: all 0.2s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 4;
+}
+
+.back-top-btn.active {
+  opacity: 1;
+  visibility: visible;
+}
+/***** End back to top Section *****/
+
+.header.hide {
+  /* transform: translate(100%); */
+  transition-delay: 250ms;
+}
+
+.header.active {
+  padding-block: 12px;
+  background-color: #fff;
+  /* border-color: var(--black-alpha-15); */
+}
+
+#hero-container h1 {
+  /* font-size: 4rem; */
+  pointer-events: none;
+  -webkit-user-select: none;
 }

@@ -1,3 +1,5 @@
+"use strict";
+
 const navDialog = document.getElementById("nav-dialog");
 handleMenu;
 function handleMenu() {
@@ -98,4 +100,62 @@ dtElements.forEach((element) => {
     ddElement.classList.toggle("hidden");
     ddArrowIcon.classList.toggle("-rotate-180");
   });
+});
+
+// header and back to open n
+
+const header = document.querySelector("[data-header]");
+const backTopBtn = document.querySelector("[data-back-top-btn]");
+
+let lastScrollPos = 0;
+
+const hideHeader = function () {
+  const isScrollBottom = lastScrollPos < window.scrollY;
+  if (isScrollBottom) {
+    header.classList.add("hide");
+  } else {
+    header.classList.remove("hide");
+  }
+
+  lastScrollPos = window.scrollY;
+};
+
+window.addEventListener("scroll", function () {
+  if (window.scrollY >= 50) {
+    header.classList.add("active");
+    backTopBtn.classList.add("active");
+    hideHeader();
+  } else {
+    header.classList.remove("active");
+    backTopBtn.classList.remove("active");
+  }
+});
+
+// header and back to open n
+
+const headerr = document.querySelector("[data-header]");
+const backTopBtnn = document.querySelector("[data-back-top-btn]");
+
+let lastScrollPoss = 0;
+lastScrollPoss;
+const hideHead = function () {
+  const isScrollBottom = lastScrollPos < window.scrollY;
+  if (isScrollBottom) {
+    headerr.classList.add("hide");
+  } else {
+    headerr.classList.remove("hide");
+  }
+
+  lastScrollPoss = window.scrollY;
+};
+hideHead;
+window.addEventListener("scroll", function () {
+  if (window.scrollY >= 400) {
+    headerr.classList.add("active");
+    backTopBtnn.classList.add("active");
+    hideHeader();
+  } else {
+    headerr.classList.remove("active");
+    backTopBtnn.classList.remove("active");
+  }
 });
