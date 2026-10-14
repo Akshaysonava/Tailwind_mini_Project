@@ -5,13 +5,15 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>assignment</title>
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
-      integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    /> -->
+
+    <!-- Tailwind CSS Script CDN with Dark Mode Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+
     <!-- Font Awesome 6 CDN -->
     <link
       rel="stylesheet"
@@ -30,6 +32,43 @@
     ></script>
     
     <link href="/src/style.css" rel="stylesheet" />
+
+    <!-- Dark Mode CSS Adjustments for Native Theme Switching -->
+    <style>
+      html {
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      /* Dark mode override styles */
+      html.dark body {
+        background-color: #0f172a;
+        color: #f8fafc;
+      }
+      html.dark nav,
+      html.dark #nav-dialog,
+      html.dark .bg-white,
+      html.dark .bg-gray-50,
+      html.dark .lg\:bg-slate-50 {
+        background-color: #1e293b !important;
+        color: #f8fafc !important;
+        border-color: #334155 !important;
+      }
+      html.dark .text-gray-800,
+      html.dark .text-black,
+      html.dark .text-gray-600 {
+        color: #e2e8f0 !important;
+      }
+      html.dark .border-gray-300,
+      html.dark .border-gray-400,
+      html.dark .border-gray-200 {
+        border-color: #334155 !important;
+      }
+      html.dark #hero {
+        background: linear-gradient(to bottom, #1e1b4b, #0f172a) !important;
+      }
+      html.dark footer {
+        background-color: #0f172a !important;
+      }
+    </style>
   </head>
   <body id="top">
     <!-- ========== Start navbar Section ========== -->
@@ -42,14 +81,19 @@
         />
         <span class="text-lg font-medium">ToDesktop</span>
       </a>
-      <div id="nav-menu" class="hidden md:flex lg:gap-12 md:gap-6">
+      <div id="nav-menu" class="hidden md:flex lg:gap-12 md:gap-6 items-center">
         <a href="#" class="font-medium hover:text-blue-950">Pricing</a>
         <a href="#" class="font-medium hover:text-blue-950">Docs</a>
         <a href="#" class="font-medium hover:text-blue-950">Changelog</a>
         <a href="#" class="font-medium hover:text-blue-950">Blogs</a>
         <a href="#" class="font-medium hover:text-blue-950">Login</a>
       </div>
-      <div class="hidden md:flex flex-1 justify-end">
+      <div class="hidden md:flex flex-1 justify-end items-center gap-4">
+        <!-- Theme Toggle Button (Desktop) -->
+        <button id="theme-toggle-btn" class="p-2.5 rounded-lg border border-gray-300 hover:bg-gray-100 transition focus:outline-none" aria-label="Toggle Theme">
+          <i id="theme-toggle-icon" class="fa-solid fa-moon text-lg text-gray-700"></i>
+        </button>
+
         <button
           class="flex gap-2 items-center border border-gray-400 lg:px-6 md:py-1 md:gap-1 md:px-2  lg:py-2  rounded-lg hover:border-gray-600"
         >
@@ -61,9 +105,17 @@
           <i class="fa-solid fa-arrow-right"></i>
         </button>
       </div>
-      <button class="p-2 md:hidden" onclick="handleMenu()">
-        <i class="fa-solid fa-bars text-gray-800"></i>
-      </button>
+      
+      <div class="flex items-center gap-2 md:hidden">
+        <!-- Theme Toggle Button (Mobile Top Bar) -->
+        <button id="mobile-theme-toggle-btn" class="p-2 rounded-lg border border-gray-300 focus:outline-none" aria-label="Toggle Theme">
+          <i id="mobile-theme-toggle-icon" class="fa-solid fa-moon text-gray-800"></i>
+        </button>
+
+        <button class="p-2 md:hidden" onclick="handleMenu()">
+          <i class="fa-solid fa-bars text-gray-800"></i>
+        </button>
+      </div>
 
       <div
         id="nav-dialog"
@@ -128,7 +180,7 @@
       <!--//?  Hero Section  -->
       <div
         id="hero"
-        class="min-h-screen -bg-linear-210  mt-14  from-purple-50 via-orange-50 to-transparent "
+        class="min-h-screen -bg-linear-210  mt-14  from-purple-50 via-orange-50 to-transparent"
       >
         <div
           id="hero-container"
@@ -563,7 +615,7 @@
               <div
                 class="flex flex-col min-w-24 min-h-24 items-center justify-center bg-white rounded-xl border border-gray-400 md:min-h-32  md:min-w-32"
               >
-                <img class="w-12 h-12 md:w-16 md:h-16" src=https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2016.png" alt="" />
+                <img class="w-12 h-12 md:w-16 md:h-16" src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2016.png" alt="" />
                 <span class="text-[12px] md:text-[16px] font-semibold">Nobounce </span>
               </div>
               <div
@@ -670,7 +722,7 @@
       </div>
 
       <!-- step by step  -->
-       <div id="steps" class="flex flex-col gap-6 container lg:px-8 lg:mt-10  sm:-mt-58">
+       <div id="steps" class="flex flex-col gap-6 container lg:px-8 lg:mt-10">
         <h2 class="text-gray-800 font-medium text-5xl sm:font-semibold mb-14">How it works </h2>
         <div id="step1" class="rounded-xl border border-gray-300 px-8 py-12 flex flex-col lg:flex-row justify-between">
           <div class="flex flex-col gap-6 lg:w-1/2">
@@ -797,7 +849,7 @@
                 <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2037.png" alt="Events message ">
               </div>
             </div>
- 
+
             <div class="row-start-1 row-end-4 group rounded-2xl gradient-hover-outer  ">
               <div class="bg-white rounded-2xl w-full h-full p-6 flex gap-5 flex-col items-center gradient-hover-inner  ">
                 <h3 class="text-gray-800 font-medium text-2xl">Native Notifications </h3>
@@ -805,14 +857,14 @@
                 <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2038.png" alt="Events message ">
               </div>
             </div>
- 
+
             <div class="row-start-1 row-end-3 group rounded-2xl gradient-hover-outer  ">
               <div class="bg-white rounded-2xl w-full h-full p-6 flex gap-5 flex-col items-center gradient-hover-inner  ">
                 <h3 class="text-gray-800 font-medium text-2xl">Native Notifications </h3>
                 <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2039.png" alt="Events message ">
               </div>
             </div>
- 
+
             <div class="row-start-3 row-end-6 group rounded-2xl gradient-hover-outer  ">
               <div class="bg-white rounded-2xl w-full h-full p-6 flex gap-5 flex-col items-center gradient-hover-inner  ">
                 <h3 class="text-gray-800 font-medium text-2xl">Native Notifications </h3>
@@ -820,14 +872,14 @@
                 <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2040.png" alt="Events message ">
               </div>
             </div>
- 
+
             <div class="row-start-4 row-end-6 group rounded-2xl gradient-hover-outer  ">
               <div class="bg-white rounded-2xl w-full h-full p-6 flex gap-5 flex-col items-center gradient-hover-inner  ">
                 <h3 class="text-gray-800 font-medium text-2xl">Native Notifications </h3>
                 <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2037.png" alt="Events message ">
               </div>
             </div>
- 
+
                <div class=" row-start-3 row-end-6  group rounded-2xl gradient-hover-outer  ">
               <div class="bg-white rounded-2xl w-full h-full p-6 flex gap-5 flex-col items-center gradient-hover-inner  ">
                 <h3 class="text-gray-800 font-medium text-2xl">Native Notifications </h3>
@@ -836,7 +888,7 @@
               </div>
             </div>
 
- 
+
           </div>
         </div>
 
@@ -967,9 +1019,12 @@
                 <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2046.png" class="pl-12" alt="">
               </div>
             </div>
-            <div class="flex flex-col lg:flex-row justify-between gap-4 mt-6">
+
+
+            <div class="flex flex-col lg:flex-row justify-between gap-4 mt-6  ">
+
               <div class="rounded-2xl gradient-hover-outer group">
-                <div class="rounded-2xl p-6 gradient-hover-inner flex flex-col gap-6">
+                <div class="rounded-2xl p-6 gradient-hover-inner flex flex-col gap-6 bg-white ">
                   <div class="flex items-center gap-4 ">
                     <div class="w-12 h-12 bg-blue-200 flex items-center justify-center rounded-full"  >
                         <i class="fa-solid fa-code text-indigo-800"></i>
@@ -978,7 +1033,7 @@
                     <h3 class="text-gray-800 font-medium text-2xl ">Native APIs</h3>
 
                   </div>
-                  <p class="text-lg font-light">
+                  <p class= "text-gray-800 text-lg font-light">
                     What sets ToDesktop apart is its seamless integration with
                 native APIs using our existing web codebase. By tapping into
                 APIs like Tray and Notifications, we've crafted an exceptionally
@@ -1002,90 +1057,77 @@
 
               </div>
 
-                   <div class="rounded-2xl gradient-hover-outer group">
-            <div
-              class="rounded-2xl p-6 gradient-hover-inner flex flex-col gap-6"
-            >
-              <div class="flex items-center gap-4">
-                <div
-                  class="w-12 h-12 bg-blue-200 flex items-center justify-center rounded-full"
-                >
-                  <i class="fa-solid fa-code text-indigo-800"></i>
-                </div>
-                <h3 class="text-2xl font-semibold">Native APIs</h3>
-              </div>
-              <p class="text-lg font-light">
-                What sets ToDesktop apart is its seamless integration with
+              
+              <div class="rounded-2xl gradient-hover-outer group">
+                <div class="rounded-2xl p-6 gradient-hover-inner flex flex-col gap-6 bg-white ">
+                  <div class="flex items-center gap-4 ">
+                    <div class="w-12 h-12 bg-blue-200 flex items-center justify-center rounded-full"  >
+                        <i class="fa-solid fa-code text-indigo-800"></i>
+
+                    </div>
+                    <h3 class="text-gray-800 font-medium text-2xl ">Native APIs</h3>
+
+                  </div>
+                  <p class= "text-gray-800 text-lg font-light">
+                    What sets ToDesktop apart is its seamless integration with
                 native APIs using our existing web codebase. By tapping into
                 APIs like Tray and Notifications, we've crafted an exceptionally
                 polished desktop user experience.
-              </p>
-              <div class="flex gap-4">
-                <div class="flex">
-                  <div
-                    class="-mr-3 w-12 h-12 flex justify-center items-center rounded-full overflow-hidden border border-white"
-                  >
-                    <img
-                      src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2047.png"
-                      class="min-w-16 min-h-16"
-                      alt=""
-                    />
-                  </div>
-                  <div
-                    class="w-12 h-12 rounded-full overflow-hidden border border-white"
-                  >
-                    <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2048.jpeg" alt="" />
+                  </p>
+                  <div class="flex gap-4">
+                    <div class="flex">
+                      <div class="-mr-3 w-12 h-12 flex justify-center items-center rounded-full overflow-hidden border border-white">
+                        <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2047.png"  class="min-w-16 min-h-16" alt="">
+                      </div>
+                      <div class="w-12 h-12 rounded-full overflow-hidden not-only-of-type:border border-white">
+                        <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2048.jpeg" alt="">
+                      </div>
+                    </div>
+                    <div class="flex flex-col">
+                      <h3 class="text-gray-800 font-medium">Rick Pastoor </h3>
+                      <a href="#" class="anchor-hover w-fit text-gray-500">Rise</a>
+                    </div>
                   </div>
                 </div>
-                <div class="flex flex-col">
-                  <h3>Rick Pastoor</h3>
-                  <a href="#" class="anchor-hover w-fit text-gray-500">Rise</a>
-                </div>
+
               </div>
-            </div>
-          </div>
-          <div class="rounded-2xl gradient-hover-outer group">
-            <div
-              class="rounded-2xl p-6 gradient-hover-inner flex flex-col gap-6"
-            >
-              <div class="flex items-center gap-4">
-                <div
-                  class="w-12 h-12 bg-blue-200 flex items-center justify-center rounded-full"
-                >
-                  <i class="fa-solid fa-code text-indigo-800"></i>
-                </div>
-                <h3 class="text-2xl font-semibold">Native APIs</h3>
-              </div>
-              <p class="text-lg font-light">
-                What sets ToDesktop apart is its seamless integration with
+
+              
+              <div class="rounded-2xl gradient-hover-outer group">
+                <div class="rounded-2xl p-6 gradient-hover-inner flex flex-col gap-6 bg-white ">
+                  <div class="flex items-center gap-4 ">
+                    <div class="w-12 h-12 bg-blue-200 flex items-center justify-center rounded-full"  >
+                        <i class="fa-solid fa-code text-indigo-800"></i>
+
+                    </div>
+                    <h3 class="text-gray-800 font-medium text-2xl ">Native APIs</h3>
+
+                  </div>
+                  <p class= "text-gray-800 text-lg font-light">
+                    What sets ToDesktop apart is its seamless integration with
                 native APIs using our existing web codebase. By tapping into
                 APIs like Tray and Notifications, we've crafted an exceptionally
                 polished desktop user experience.
-              </p>
-              <div class="flex gap-4">
-                <div class="flex">
-                  <div
-                    class="-mr-3 w-12 h-12 flex justify-center items-center rounded-full overflow-hidden border border-white"
-                  >
-                    <img
-                      src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2047.png"
-                      class="min-w-16 min-h-16"
-                      alt=""
-                    />
-                  </div>
-                  <div
-                    class="w-12 h-12 rounded-full overflow-hidden border border-white"
-                  >
-                    <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2048.jpeg" alt="" />
+                  </p>
+                  <div class="flex gap-4">
+                    <div class="flex">
+                      <div class="-mr-3 w-12 h-12 flex justify-center items-center rounded-full overflow-hidden border border-white">
+                        <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2047.png"  class="min-w-16 min-h-16" alt="">
+                      </div>
+                      <div class="w-12 h-12 rounded-full overflow-hidden not-only-of-type:border border-white">
+                        <img src="https://anuj-kumar-sharma.github.io/tailwind-landing-page/assets/asset%2048.jpeg" alt="">
+                      </div>
+                    </div>
+                    <div class="flex flex-col">
+                      <h3 class="text-gray-800 font-medium">Rick Pastoor </h3>
+                      <a href="#" class="anchor-hover w-fit text-gray-500">Rise</a>
+                    </div>
                   </div>
                 </div>
-                <div class="flex flex-col">
-                  <h3>Rick Pastoor</h3>
-                  <a href="#" class="anchor-hover w-fit text-gray-500">Rise</a>
-                </div>
+
               </div>
-            </div>
-          </div>
+
+
             </div>
 
             <div class="rounded-2xl flex flex-col bg-black lg:flex-row mt-12 pt-6 lg:pt-10 ">
@@ -1187,7 +1229,7 @@
                 >
               </li>
               </ul>
-              <button class="border border-gray-300 text-lg text-center  px-8 py-3 text-blue-700 rounded-lg hover:border-gray-800 font-medium">Read Docs </button>
+              <button class="border border-gray-300 text-lg text-center bg-black  px-8 py-3 text-blue-700 rounded-lg hover:border-gray-800 font-medium">Read Docs </button>
               </div>
 
                  <div class="border border-gray-300  flex-1 relative  rounded-xl px-8 pt-12 pb-8 flex flex-col gap-6 lg:border-none lg:bg-slate-50 " >
@@ -1226,7 +1268,7 @@
                 >
               </li>
               </ul>
-              <button class="border border-gray-300 text-lg text-center  px-8 py-3 text-blue-700 rounded-lg hover:border-gray-800 font-medium">Read Docs </button>
+              <button class="border border-gray-300 text-lg text-center  px-8 py-3 bg-blue-700  text-blue-100 rounded-lg hover:border-gray-800 font-medium">Read Docs </button>
               </div>
 
             </div>
@@ -1331,7 +1373,7 @@
 
               </div>
                </div>
-     
+      
     </main>
     <!-- ========== End Main Section ========== -->
 
@@ -1370,7 +1412,7 @@
     <!-- ========== End FOOTER Section ========== -->
     
   <!-- ========== Start BACK TO TOP Section ========== -->
-      <a href="#top" class="back-top-btn  shadow-md  bg-black hover:bg-gray-700 hover:text-white " aria-label="back to top" data-back-top-btn>
+      <a href="#top" class="back-top-btn  shadow-md  bg-blue-700 hover:bg-blue-500" aria-label="back to top" data-back-top-btn>
        <i
                 class="fa-solid fa-chevron-up text-lg"></i>
       </a>
@@ -1379,11 +1421,50 @@
 
     <script src="script.js"></script>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Dark & Light Mode Toggle JavaScript Implementation -->
+    <script>
+      (function () {
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const themeToggleIcon = document.getElementById('theme-toggle-icon');
+        const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle-btn');
+        const mobileThemeToggleIcon = document.getElementById('mobile-theme-toggle-icon');
+
+        // Check stored theme or system preference
+        const userTheme = localStorage.getItem('theme');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        // Apply theme on load
+        if (userTheme === 'dark' || (!userTheme && systemTheme)) {
+          document.documentElement.classList.add('dark');
+          updateIcons(true);
+        } else {
+          document.documentElement.classList.remove('dark');
+          updateIcons(false);
+        }
+
+        // Function to update icon states
+        function updateIcons(isDark) {
+          if (isDark) {
+            if (themeToggleIcon) themeToggleIcon.className = 'fa-solid fa-sun text-lg text-yellow-400';
+            if (mobileThemeToggleIcon) mobileThemeToggleIcon.className = 'fa-solid fa-sun text-yellow-400';
+          } else {
+            if (themeToggleIcon) themeToggleIcon.className = 'fa-solid fa-moon text-lg text-gray-700';
+            if (mobileThemeToggleIcon) mobileThemeToggleIcon.className = 'fa-solid fa-moon text-gray-800';
+          }
+        }
+
+        // Toggle action
+        function toggleTheme() {
+          const isDark = document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+          updateIcons(isDark);
+        }
+
+        // Event listeners
+        if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+      })();
+    </script>
   </body>
 </html>
-  
-
-
-
-
-
