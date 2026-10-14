@@ -21,8 +21,8 @@ html {
 
 .container {
   padding: 3rem 1.5rem;
-  max-width: 95rem;
-  /* margin-top: 1rem; */
+  max-width: 85rem;
+  /* margin-top: -15rem; */
   margin-inline: auto;
 }
 
